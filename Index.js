@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-const routes = require('/Routes/Routes');
+const routes = require('./Routes/Routes.js');
 
 // database connection
 const mongoose = require('mongoose');
