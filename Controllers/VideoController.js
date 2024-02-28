@@ -145,7 +145,7 @@ const VideoDelete = async (req, res) => {
         }
 
         const playlist = await Playlist.findOneAndUpdate(
-            { userId: req.body.userId },
+            { userId: req.query.userId },
             { $pull: { videos: req.query._id } },
             { new: true }
         );

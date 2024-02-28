@@ -152,7 +152,7 @@ const PinGet = async (req, res) => {
                 return res.status(404).json({ error: "Profile doesn't exist" });
             }
 
-            if (profile.pin != req.body.pin) {
+            if (profile.pin != req.query.pin) {
                 return res.status(401).json({ error: 'Incorrect pin' });
             }
 
