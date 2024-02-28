@@ -39,9 +39,9 @@ const {
  * 
  * Users
  */
-//router.get("/users", UserGet);
-//router.post("/users", UserPost);
-//router.get("/users/pin", UserPinGet);
+router.get("/users", UserGet);
+router.post("/users", UserPost);
+router.get("/users/pin", UserPinGet);
 
 /**
  * Videos and Playlist
