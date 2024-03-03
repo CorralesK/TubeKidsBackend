@@ -1,36 +1,37 @@
-const User = require("../Models/UserModel");
+require('dotenv').config();
+const User = require("../models/userModel");
 const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 
 /**
  * Function for encrypting a password using SHA-256
  * 
  * @param {string} password  - The plain text password to be encrypted.
  */
-const EncryptPassword = (password) => {
+const encryptPassword = (password) => {
     return crypto.createHash('sha256').update(password).digest('hex');
 }
 
 /**
- * Function to verify if the user is of legal age.
- * @param {string} dateString - Date of birth in format "YYYY-MM-DD".
- * @returns {boolean} - True if the user is of legal age, false otherwise.
+ * Function to create a JWT token containing only essential user information.
+ * 
+ * @param {Object} user - User object containing relevant data.
+ * @returns {string} - A JSON Web Token.
  */
-const IsOfLegalAge = (dateString) => {
-    const today = new Date();
-    const birthDate = new Date(dateString);
-
-    if (isNaN(birthDate.getTime())) {
-        throw new Error('Invalid date of birth');
-    }
-
-    let age = today.getFullYear() - birthDate.getFullYear();
-
-    if (today.getMonth() < birthDate.getMonth() || (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
-       age--;
-    }
-    
-    return age >= 18;
-};
+function createToken(user) {
+    const secretKey = process.env.SECRET_KEY;
+  
+    const tokenData = {
+      id: user._id,
+      email: user.email,
+      password: user.password,
+      pin: user.pin
+    };
+  
+    const token = jwt.sign(tokenData, secretKey, { expiresIn: '12h' });
+    return token;
+  }
+  
 
 /**
  * Create a new user (main account) in the database.
@@ -38,25 +39,24 @@ const IsOfLegalAge = (dateString) => {
  * @param {*} req
  * @param {*} res
  */
-const UserPost = async (req, res) => {
+const userPost = async (req, res) => {
     try {
-        if (!IsOfLegalAge(req.body.dateBirth)) {
-            return res.status(401).json({ error: 'User is not of legal age.' });
-        }
-
         const user = new User({
             email: req.body.email,
-            password: EncryptPassword(req.body.password),
+            password: encryptPassword(req.body.password),
             pin: req.body.pin,
             name: req.body.name,
             lastName: req.body.lastName,
             country: req.body.country,
-            dateBirth: req.body.dateBirth
+            dateBirth: req.body.dateOfBirth
         });
 
         const data = await user.save();
+
+        const token = createToken(data);
+
         res.header({ 'location': `/api/users/?id=${data.id}` });
-        res.status(201).json(data);
+        res.status(201).json(token);
     } catch (error) {
         console.error('Error while saving the user:', error);
         res.status(422).json({ error: 'There was an error saving the user' });
@@ -70,7 +70,7 @@ const UserPost = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const UserGet = async (req, res) => {
+const userGet = async (req, res) => {
     try {
         if (req.body.email && req.body.password) {
             const user = await User.findOne({ email: req.body.email });
@@ -78,13 +78,16 @@ const UserGet = async (req, res) => {
                 return res.status(404).json({ error: 'User does not exist' });
             }
 
-            const hashedPassword = EncryptPassword(req.body.password);
-            
+            const hashedPassword = encryptPassword(req.body.password);
+
             if (user.password !== hashedPassword) {
                 return res.status(401).json({ error: 'Incorrect password' });
             }
-            
-            return res.status(200).json(user);
+
+            const token = createToken(user);
+
+            res.header({ 'location': `/api/users/?id=${user.id}` });
+            return res.status(200).json(token);
         } else {
             return res.status(400).json({ error: 'Invalid request: email and password required' });
         }
@@ -100,7 +103,7 @@ const UserGet = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const UserPinGet = async (req, res) => {
+const userPinGet = async (req, res) => {
     try {
         if (req.query && req.query._id) {
             const user = await User.findById(req.query._id);
@@ -124,7 +127,7 @@ const UserPinGet = async (req, res) => {
 }
 
 module.exports = {
-    UserPost,
-    UserGet,
-    UserPinGet
+    userPost,
+    userGet,
+    userPinGet
 }

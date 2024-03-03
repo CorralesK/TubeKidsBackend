@@ -3,67 +3,105 @@ const router = express.Router();
 
 module.exports = router;
 
+const verifyToken = require('../middleware/authMiddleware.js');
+
 /**
- * 
+ * Middlewares for body field validations
  */
 const {
-    UserPost, 
-    UserGet,
-    UserPinGet
-} = require("../Controllers/UserController.js");
+    validateEmail,
+    validateLegalAge,
+    validateSixDigitNumber,
+    validateVideoUrl
+}  = require('../middleware/middlewares.js')
+
+/**
+ * Users
+ */
+const {
+    userPost,
+    userGet,
+    userPinGet
+} = require("../controllers/userController.js");
 
 /**
  * Videos
  */
 const {
-    VideoPost, 
-    VideoGet,
-    VideoPatch,
-    VideoDelete
-} = require("../Controllers/VideoController.js");
+    videoPost, 
+    videoGet,
+    videoPatch,
+    videoDelete
+} = require("../controllers/videoController.js");
 
 /**
- * Profiles
+ * profiles
  */
 const {
-    ProfilePost, 
-    ProfileGet,
-    ProfilePatch,
-    ProfileDelete,
-    AvatarGet,
-    PinGet
-} = require("../Controllers/ProfileController.js");
+    profilePost, 
+    profileGet,
+    profilePatch,
+    profileDelete,
+    avatarGet,
+    pinGet
+} = require("../controllers/profileController.js");
 
 /**
  * Listen to the task request
  * 
- * Users
+ * users
  */
-router.get("/users", UserGet);
-router.post("/users", UserPost);
-router.get("/users/pin", UserPinGet);
+router.get("/users", validateEmail, userGet);
+
+router.post("/users",
+    validateLegalAge,
+    validateEmail,
+    validateSixDigitNumber,
+    userPost
+);
+router.get("/users/pin", verifyToken, userPinGet);
 
 /**
- * Videos and Playlist
+ * videos and Playlist
  */
-router.get("/videos", VideoGet);
-router.post("/videos", VideoPost);
-router.patch("/videos", VideoPatch);
-router.put("/videos", VideoPatch);
-router.delete("/videos", VideoDelete);
+router.get("/videos", verifyToken, videoGet);
+
+router.post("/videos", 
+    verifyToken,
+    validateVideoUrl,
+    videoPost
+);
+
+router.patch("/videos", 
+    verifyToken, 
+    validateVideoUrl,
+    videoPatch
+);
+
+router.delete("/videos", verifyToken, videoDelete);
 
 /**
- * Profiles
+ * profiles
  */
-router.get("/profiles", ProfileGet);
-router.post("/profiles", ProfilePost);
-router.patch("/profiles", ProfilePatch);
-router.put("/profiles", ProfilePatch);
-router.delete("/profiles", ProfileDelete);
+router.get("/profiles", verifyToken, profileGet);
 
-router.get("/profiles/pin", PinGet);
+router.post("/profiles", 
+    verifyToken, 
+    validateSixDigitNumber,
+    profilePost
+);
+
+router.patch("/profiles", 
+    verifyToken, 
+    validateSixDigitNumber,
+    profilePatch
+);
+
+router.delete("/profiles", verifyToken, profileDelete);
+
+router.get("/profiles/pin", verifyToken, pinGet);
 
 /**
- * Avatars
+ * avatars
  */
-router.get("/profiles/avatar", AvatarGet);
+router.get("/profiles/avatar", verifyToken, avatarGet);
