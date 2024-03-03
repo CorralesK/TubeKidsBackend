@@ -22,7 +22,6 @@ const playlist = new Schema({
  * Model for videos
  */
 const Video = mongoose.model('Video', video);
-
 /**
  * Model for playlists
  */

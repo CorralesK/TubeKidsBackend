@@ -1,4 +1,4 @@
-const { Playlist, Video } = require("../Models/VideoModel.js");
+const { Playlist, Video } = require("../models/videoModel.js");
 
 /**
  * Method to create a video and add it to the playlist
@@ -6,7 +6,7 @@ const { Playlist, Video } = require("../Models/VideoModel.js");
  * @param {*} req
  * @param {*} res
  */
-const VideoPost = async (req, res) => {
+const videoPost = async (req, res) => {
     try {
         if (req.query && req.query.userId) {
             const video = new Video({
@@ -14,7 +14,7 @@ const VideoPost = async (req, res) => {
                 url: req.body.url
             });
 
-            const playlist = PlaylistPatch(video, req.query.userId);
+            const playlist = playlistPatch(video, req.query.userId);
             if (!playlist) {
                 return res.status(422).json({ error: 'There was an error updating the playlist' });
             }
@@ -40,7 +40,7 @@ const VideoPost = async (req, res) => {
  * 
  * @returns {boolean} true if the operation was successful, false if there was an error.
  */
-const PlaylistPatch = async (video, userId) => {
+const playlistPatch = async (video, userId) => {
     try {
         let playlist = await Playlist.findOne({ userId: userId });
 
@@ -65,7 +65,7 @@ const PlaylistPatch = async (video, userId) => {
  * @param {*} req
  * @param {*} res
  */
-const VideoGet = async (req, res) => {
+const videoGet = async (req, res) => {
     try {
         // if an specific video is required get it by id
         if (req.query._id) {
@@ -98,7 +98,7 @@ const VideoGet = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const VideoPatch = async (req, res) => {
+const videoPatch = async (req, res) => {
     try {
         if (!req.query || !req.query._id) {
             return res.status(400).json({ error: "Video ID is required" });
@@ -132,7 +132,7 @@ const VideoPatch = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const VideoDelete = async (req, res) => {
+const videoDelete = async (req, res) => {
     try {
         if (!req.query || !req.query._id) {
             return res.status(400).json({ error: "Video ID is required" });
@@ -163,8 +163,8 @@ const VideoDelete = async (req, res) => {
 }
 
 module.exports = {
-    VideoGet,
-    VideoPost,
-    VideoPatch,
-    VideoDelete
+    videoGet,
+    videoPost,
+    videoPatch,
+    videoDelete
 }

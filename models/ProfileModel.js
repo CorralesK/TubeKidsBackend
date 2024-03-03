@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/**
+ * Scheme for profiles (restricted users)
+ */
 const profile = new Schema({
     name: { type: String, required: true },
     pin: { type: Number, required: true },

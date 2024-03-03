@@ -1,4 +1,4 @@
-const Profile = require("../Models/ProfileModel.js");
+const Profile = require("../models/profileModel.js");
 const path = require('path');
 
 /**
@@ -7,7 +7,7 @@ const path = require('path');
  * @param {*} req
  * @param {*} res
  */
-const ProfilePost = async (req, res) => {
+const profilePost = async (req, res) => {
     try {
         if (!req.query || !req.query.userId) {
             return res.status(400).json({ error: "User ID is required" });
@@ -36,7 +36,7 @@ const ProfilePost = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const ProfileGet = async (req, res) => {
+const profileGet = async (req, res) => {
     try {
         // if an specific profile is required
         if (req.query._id) {
@@ -67,7 +67,7 @@ const ProfileGet = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const ProfilePatch = async (req, res) => {
+const profilePatch = async (req, res) => {
     try {
         if (req.query && req.query._id) {
             const profile = await Profile.findById(req.query._id);
@@ -98,7 +98,7 @@ const ProfilePatch = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const ProfileDelete = async (req, res) => {
+const profileDelete = async (req, res) => {
     try {
         if (req.query && req.query._id) {
             const profile = await Profile.findById(req.query._id);
@@ -124,9 +124,9 @@ const ProfileDelete = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const AvatarGet = async (req, res) => {
+const avatarGet = async (req, res) => {
     try {
-        const filePath = path.join(__dirname, '../Models/Data/avatar.json');
+        const filePath = path.join(__dirname, '../models/data/avatar.json');
 
         const avatarData = require(filePath);
 
@@ -143,7 +143,7 @@ const AvatarGet = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const PinGet = async (req, res) => {
+const pinGet = async (req, res) => {
     try {
         if (req.query && req.query._id) {
             const profile = await Profile.findById(req.query._id);
@@ -168,10 +168,10 @@ const PinGet = async (req, res) => {
 
 
 module.exports = {
-    ProfilePost,
-    ProfileGet,
-    ProfilePatch,
-    ProfileDelete,
-    AvatarGet,
-    PinGet
+    profilePost,
+    profileGet,
+    profilePatch,
+    profileDelete,
+    avatarGet,
+    pinGet
 }

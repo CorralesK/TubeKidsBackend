@@ -3,24 +3,24 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-const routes = require('./Routes/Routes.js');
+const routes = require('./routes/routes.js');
 
 // database connection
 const mongoose = require('mongoose');
-const MongoString = process.env.DATABASE_URL;
+const mongoString = process.env.DATABASE_URL;
 
-mongoose.connect(MongoString);
-const DataBase = mongoose.connection;
+mongoose.connect(mongoString);
+const dataBase = mongoose.connection;
 
-DataBase.on('error', (error) => { console.log(error); })
+dataBase.on('error', (error) => { console.log(error); })
 
-DataBase.once('connected', () => { console.log('Database Connected'); })
+dataBase.once('connected', () => { console.log('Database Connected'); })
 
 /**
  *  Parser for the request body (required for the POST and PUT methods)
  */
-const BodyParser = require("body-parser");
-app.use(BodyParser.json());
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
 
 /**
  * Set server port
