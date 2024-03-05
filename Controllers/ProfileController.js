@@ -9,7 +9,7 @@ const path = require('path');
  */
 const profilePost = async (req, res) => {
     try {
-        if (!req.query || !req.query.userId) {
+        if (!req.userId) {
             return res.status(400).json({ error: "User ID is required" });
         }
 
@@ -18,7 +18,7 @@ const profilePost = async (req, res) => {
             pin: req.body.pin,
             avatar: req.body.avatar,
             age: req.body.age,
-            userId: req.query.userId
+            userId: req.userId
         });
 
         const data = await profile.save();
@@ -45,9 +45,9 @@ const profileGet = async (req, res) => {
                 return res.status(404).json({ error: 'Profile not found' });
             }
             return res.status(200).json(profile);
-        } else if (req.query.userId) {
+        } else if (req.userId) {
             // get all profile related to a userId
-            const profiles = await Profile.find({ userId: req.query.userId });
+            const profiles = await Profile.find({ userId: req.userId });
             if (profiles.length === 0) {
                 return res.status(404).json({ error: 'No profiles found for the specified user ID' });
             }

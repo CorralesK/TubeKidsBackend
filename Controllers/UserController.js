@@ -72,13 +72,13 @@ const userPost = async (req, res) => {
  */
 const userGet = async (req, res) => {
     try {
-        if (req.body.email && req.body.password) {
-            const user = await User.findOne({ email: req.body.email });
+        if (req.query.email && req.query.password) {
+            const user = await User.findOne({ email: req.query.email });
             if (!user) {
                 return res.status(404).json({ error: 'User does not exist' });
             }
 
-            const hashedPassword = encryptPassword(req.body.password);
+            const hashedPassword = encryptPassword(req.query.password);
 
             if (user.password !== hashedPassword) {
                 return res.status(401).json({ error: 'Incorrect password' });
@@ -105,8 +105,8 @@ const userGet = async (req, res) => {
  */
 const userPinGet = async (req, res) => {
     try {
-        if (req.query && req.query._id) {
-            const user = await User.findById(req.query._id);
+        if (req.userId) {
+            const user = await User.findById(req.userId);
 
             if (!user) {
                 return res.status(404).json({ error: "User doesn't exist" });

@@ -8,13 +8,13 @@ const { Playlist, Video } = require("../models/videoModel.js");
  */
 const videoPost = async (req, res) => {
     try {
-        if (req.query && req.query.userId) {
+        if (req.userId) {
             const video = new Video({
                 name: req.body.name,
                 url: req.body.url
             });
 
-            const playlist = playlistPatch(video, req.query.userId);
+            const playlist = playlistPatch(video, req.userId);
             if (!playlist) {
                 return res.status(422).json({ error: 'There was an error updating the playlist' });
             }
@@ -75,9 +75,9 @@ const videoGet = async (req, res) => {
             }
             res.header({ 'location': `/api/videos/?id=${video._id}` });
             res.status(200).json(video);
-        } else if (req.query.userId) {
+        } else if (req.userId) {
             // otherwise get all the videos from a given user
-            const playlist = await Playlist.findOne({ userId: req.query.userId }).populate('videos');
+            const playlist = await Playlist.findOne({ userId: req.userId }).populate('videos');
             if (!playlist) {
                 return res.status(404).json({ error: 'Playlist not found' });
             }
@@ -145,7 +145,7 @@ const videoDelete = async (req, res) => {
         }
 
         const playlist = await Playlist.findOneAndUpdate(
-            { userId: req.query.userId },
+            { userId: req.userId },
             { $pull: { videos: req.query._id } },
             { new: true }
         );

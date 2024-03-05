@@ -4,11 +4,17 @@
  */
 const validateEmail = (req, res, next) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(req.body.email)) {
-        return res.status(400).json({ error: 'Invalid email address' });
+
+    try {
+        if (!emailRegex.test(req.body.email)) {
+            throw new Error('Invalid email address');
+        }
+        next();
+    } catch (error) {
+        return res.status(400).json({ error: error.message || 'Email validation error' });
     }
-    next();
-}
+};
+
 
 /**
  * Middleware to verify if the user is of legal age based on date of birth in req.body.

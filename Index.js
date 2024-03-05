@@ -22,14 +22,20 @@ dataBase.once('connected', () => { console.log('Database Connected'); })
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
-/**
- * Set server port
- */
-app.listen(3000, () => {
-    console.log(`Server Started at ${3000}`)
-})
+const cors = require("cors");
+app.use(cors({
+  domains: '*',
+  methods: "*"
+}));
 
 /**
  * Use routes file
  */
 app.use('/api', routes);
+
+/**
+ * Set server port
+ */
+app.listen(3001, () => {
+    console.log(`Server Started at ${3001}`)
+})

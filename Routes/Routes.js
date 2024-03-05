@@ -51,11 +51,11 @@ const {
  * 
  * users
  */
-router.get("/users", validateEmail, userGet);
+router.get("/users", userGet);
 
 router.post("/users",
-    validateLegalAge,
     validateEmail,
+    validateLegalAge,
     validateSixDigitNumber,
     userPost
 );
