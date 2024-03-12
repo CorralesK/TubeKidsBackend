@@ -8,23 +8,22 @@ const { Playlist, Video } = require("../models/videoModel.js");
  */
 const videoPost = async (req, res) => {
     try {
-        if (req.userId) {
-            const video = new Video({
-                name: req.body.name,
-                url: req.body.url
-            });
-
-            const playlist = playlistPatch(video, req.userId);
-            if (!playlist) {
-                return res.status(422).json({ error: 'There was an error updating the playlist' });
-            }
-
-            const savedVideo = await video.save();
-            res.header({ 'location': `/api/videos/?id=${savedVideo.id}` });
-            res.status(201).json(savedVideo);
-        } else {
+        if (!req.userId) {
             res.status(404).json({ error: "User ID not specified" });
         }
+        const video = new Video({
+            name: req.body.name,
+            url: req.body.url
+        });
+
+        const playlist = playlistPatch(video, req.userId);
+        if (!playlist) {
+            return res.status(422).json({ error: 'There was an error updating the playlist' });
+        }
+
+        const savedVideo = await video.save();
+        res.header({ 'location': `/api/videos/?id=${savedVideo.id}` });
+        res.status(201).json(savedVideo);
     } catch (error) {
         console.error('Error while saving the video:', error);
         res.status(500).json({ error: 'Internal server error' });
