@@ -51,7 +51,7 @@ const {
  * 
  * users
  */
-router.get("/users", userGet);
+router.post("/session", userGet);
 
 router.post("/users",
     validateEmail,

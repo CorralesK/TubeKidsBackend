@@ -56,7 +56,7 @@ const validateSixDigitNumber = (req, res, next) => {
  * @returns {Function} Middleware function.
  */
 const validateVideoUrl = (req, res, next) => {
-    const urlRegex = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[\w\-]{11}$/;
+    const urlRegex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})$/;
     if (!urlRegex.test(req.body.url)) {
         return res.status(400).json({ error: `Invalid value for url. Must be a valid video URL` });
     }

@@ -72,13 +72,13 @@ const userPost = async (req, res) => {
  */
 const userGet = async (req, res) => {
     try {
-        if (req.query.email && req.query.password) {
-            const user = await User.findOne({ email: req.query.email });
+        if (req.body.email && req.body.password) {
+            const user = await User.findOne({ email: req.body.email });
             if (!user) {
                 return res.status(404).json({ error: 'User does not exist' });
             }
 
-            const hashedPassword = encryptPassword(req.query.password);
+            const hashedPassword = encryptPassword(req.body.password);
 
             if (user.password !== hashedPassword) {
                 return res.status(401).json({ error: 'Incorrect password' });
