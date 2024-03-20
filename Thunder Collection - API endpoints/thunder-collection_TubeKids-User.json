@@ -1,0 +1,74 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "TubeKids-User",
+    "dateExported": "2024-03-20T21:47:58.148Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "bdba581e-e5dc-44fd-9bdc-c818dcc04c6f",
+            "colId": "e4bb0bd9-11d9-44bb-8892-1e1be6604d9b",
+            "containerId": "",
+            "name": "UserPost(register)",
+            "url": "http://localhost:3001/api/users",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-28T20:41:35.431Z",
+            "modified": "2024-03-20T21:22:57.441Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"kecorrales073@gmail.com\",\n  \"password\":\"kimc0704\",\n  \"pin\":123456,\n  \"name\":\"Keilyn\",\n  \"lastName\":\"Corrales\",\n  \"country\":\"Costa Rica\",\n  \"dateOfBirth\":\"2001-06-13\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "e4aede59-03a7-4f63-bffd-dfbec60e72af",
+            "colId": "e4bb0bd9-11d9-44bb-8892-1e1be6604d9b",
+            "containerId": "",
+            "name": "UserGet(login)",
+            "url": "localhost:3001/api/session",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-28T20:48:28.173Z",
+            "modified": "2024-03-20T21:25:17.716Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"kecorrales073@gmail.com\",\n  \"password\":\"kimc0704\"\n}",
+                "form": []
+            },
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "a96f2ff0-e7be-4583-97b5-5a87119895fb",
+            "colId": "e4bb0bd9-11d9-44bb-8892-1e1be6604d9b",
+            "containerId": "",
+            "name": "PinGet",
+            "url": "localhost:3001/api/users/pin?pin=123456",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-28T20:51:03.089Z",
+            "modified": "2024-03-20T21:24:01.937Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "pin",
+                    "value": "123456",
+                    "isPath": false
+                }
+            ],
+            "reqType": "get",
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmI1M2IxZWQ3MTI5ZGVkZjIwOWZjMSIsImVtYWlsIjoia2Vjb3JyYWxlczA3M0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNlYTk4ZWNjZjllMmNlOTcxNGMzZWJlMjU3MDhkNzRmZmViMjMyNmQ5MzQxMjFjNzgyYWViMjRjOTdkZjgwNWQiLCJwaW4iOjEyMzQ1NiwiaWF0IjoxNzEwOTY5Nzc3LCJleHAiOjE3MTEwMTI5Nzd9.5Cv7a6D9EBKgiERLDfWQK47dTRL-OMDLpg_j_6-X1tQ"
+            },
+            "tests": []
+        }
+    ]
+}

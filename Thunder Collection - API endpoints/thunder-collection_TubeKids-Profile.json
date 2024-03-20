@@ -1,0 +1,211 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "TubeKids-Profile",
+    "dateExported": "2024-03-20T21:47:37.513Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "e59460c3-8831-40ac-8d1d-f314031e0009",
+            "colId": "db07da29-0a80-4ce3-948a-3a9b72804edc",
+            "containerId": "",
+            "name": "ProfilePost",
+            "url": "localhost:3001/api/profiles",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-02-26T22:07:35.048Z",
+            "modified": "2024-03-20T21:26:43.904Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Sebas\",\n  \"pin\": 123456,\n  \"avatar\": \"https://pm1.aminoapps.com/6978/bd5d6a33b65e0282ece23900da672a41b70a7678r1-459-519v2_hq.jpg\",\n  \"age\": 12\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmI1M2IxZWQ3MTI5ZGVkZjIwOWZjMSIsImVtYWlsIjoia2Vjb3JyYWxlczA3M0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNlYTk4ZWNjZjllMmNlOTcxNGMzZWJlMjU3MDhkNzRmZmViMjMyNmQ5MzQxMjFjNzgyYWViMjRjOTdkZjgwNWQiLCJwaW4iOjEyMzQ1NiwiaWF0IjoxNzEwOTY5Nzc3LCJleHAiOjE3MTEwMTI5Nzd9.5Cv7a6D9EBKgiERLDfWQK47dTRL-OMDLpg_j_6-X1tQ"
+            },
+            "tests": []
+        },
+        {
+            "_id": "c72cb32d-f293-4623-a90f-8d6c028366ce",
+            "colId": "db07da29-0a80-4ce3-948a-3a9b72804edc",
+            "containerId": "",
+            "name": "ProfileGet",
+            "url": "localhost:3001/api/profiles?_id=65fb5493ed7129dedf209fc5",
+            "method": "GET",
+            "sortNum": 72500,
+            "created": "2024-02-26T22:39:14.354Z",
+            "modified": "2024-03-20T21:28:08.975Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "_id",
+                    "value": "65fb5493ed7129dedf209fc5",
+                    "isPath": false
+                }
+            ],
+            "reqType": "get",
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmI1M2IxZWQ3MTI5ZGVkZjIwOWZjMSIsImVtYWlsIjoia2Vjb3JyYWxlczA3M0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNlYTk4ZWNjZjllMmNlOTcxNGMzZWJlMjU3MDhkNzRmZmViMjMyNmQ5MzQxMjFjNzgyYWViMjRjOTdkZjgwNWQiLCJwaW4iOjEyMzQ1NiwiaWF0IjoxNzEwOTY5Nzc3LCJleHAiOjE3MTEwMTI5Nzd9.5Cv7a6D9EBKgiERLDfWQK47dTRL-OMDLpg_j_6-X1tQ"
+            },
+            "tests": []
+        },
+        {
+            "_id": "c8fbc312-b9d9-4960-ac75-342293bf30b1",
+            "colId": "db07da29-0a80-4ce3-948a-3a9b72804edc",
+            "containerId": "",
+            "name": "ProfileGetAll",
+            "url": "localhost:3001/api/profiles",
+            "method": "GET",
+            "sortNum": 75000,
+            "created": "2024-02-26T22:38:54.380Z",
+            "modified": "2024-03-20T21:28:29.915Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmI1M2IxZWQ3MTI5ZGVkZjIwOWZjMSIsImVtYWlsIjoia2Vjb3JyYWxlczA3M0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNlYTk4ZWNjZjllMmNlOTcxNGMzZWJlMjU3MDhkNzRmZmViMjMyNmQ5MzQxMjFjNzgyYWViMjRjOTdkZjgwNWQiLCJwaW4iOjEyMzQ1NiwiaWF0IjoxNzEwOTY5Nzc3LCJleHAiOjE3MTEwMTI5Nzd9.5Cv7a6D9EBKgiERLDfWQK47dTRL-OMDLpg_j_6-X1tQ"
+            },
+            "tests": []
+        },
+        {
+            "_id": "377840b0-82e1-4bf3-85fc-d1ed8de2f656",
+            "colId": "db07da29-0a80-4ce3-948a-3a9b72804edc",
+            "containerId": "",
+            "name": "ProfilePatch",
+            "url": "localhost:3001/api/profiles?_id=65fb5493ed7129dedf209fc5",
+            "method": "PATCH",
+            "sortNum": 80000,
+            "created": "2024-02-26T22:36:16.158Z",
+            "modified": "2024-03-20T21:31:33.848Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "_id",
+                    "value": "65fb5493ed7129dedf209fc5",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Sebastian\",\n  \"pin\": 123456,\n  \"avatar\": \"https://pm1.aminoapps.com/6978/bd5d6a33b65e0282ece23900da672a41b70a7678r1-459-519v2_hq.jpg\",\n  \"age\": 12\n}",
+                "form": []
+            },
+            "reqType": "patch",
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmI1M2IxZWQ3MTI5ZGVkZjIwOWZjMSIsImVtYWlsIjoia2Vjb3JyYWxlczA3M0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNlYTk4ZWNjZjllMmNlOTcxNGMzZWJlMjU3MDhkNzRmZmViMjMyNmQ5MzQxMjFjNzgyYWViMjRjOTdkZjgwNWQiLCJwaW4iOjEyMzQ1NiwiaWF0IjoxNzEwOTY5Nzc3LCJleHAiOjE3MTEwMTI5Nzd9.5Cv7a6D9EBKgiERLDfWQK47dTRL-OMDLpg_j_6-X1tQ"
+            },
+            "tests": []
+        },
+        {
+            "_id": "d1217494-71a6-4859-a009-eb3c6a82e68b",
+            "colId": "db07da29-0a80-4ce3-948a-3a9b72804edc",
+            "containerId": "",
+            "name": "PinCorrectGet",
+            "url": "localhost:3001/api/profiles/pin?_id=65fb5493ed7129dedf209fc5&pin=123456",
+            "method": "GET",
+            "sortNum": 95000,
+            "created": "2024-02-27T00:13:49.725Z",
+            "modified": "2024-03-20T21:37:33.690Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "_id",
+                    "value": "65fb5493ed7129dedf209fc5",
+                    "isPath": false
+                },
+                {
+                    "name": "pin",
+                    "value": "123456",
+                    "isPath": false
+                }
+            ],
+            "reqType": "get",
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmI1M2IxZWQ3MTI5ZGVkZjIwOWZjMSIsImVtYWlsIjoia2Vjb3JyYWxlczA3M0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNlYTk4ZWNjZjllMmNlOTcxNGMzZWJlMjU3MDhkNzRmZmViMjMyNmQ5MzQxMjFjNzgyYWViMjRjOTdkZjgwNWQiLCJwaW4iOjEyMzQ1NiwiaWF0IjoxNzEwOTY5Nzc3LCJleHAiOjE3MTEwMTI5Nzd9.5Cv7a6D9EBKgiERLDfWQK47dTRL-OMDLpg_j_6-X1tQ"
+            },
+            "tests": []
+        },
+        {
+            "_id": "a4b2abee-0a57-4473-b934-c58a00ca4178",
+            "colId": "db07da29-0a80-4ce3-948a-3a9b72804edc",
+            "containerId": "",
+            "name": "PinIncorrectGet",
+            "url": "localhost:3001/api/profiles/pin?_id=65fb5493ed7129dedf209fc5&pin=12345",
+            "method": "GET",
+            "sortNum": 102500,
+            "created": "2024-02-27T00:20:49.968Z",
+            "modified": "2024-03-20T21:38:28.838Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "_id",
+                    "value": "65fb5493ed7129dedf209fc5",
+                    "isPath": false
+                },
+                {
+                    "name": "pin",
+                    "value": "12345",
+                    "isPath": false
+                }
+            ],
+            "reqType": "get",
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmI1M2IxZWQ3MTI5ZGVkZjIwOWZjMSIsImVtYWlsIjoia2Vjb3JyYWxlczA3M0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNlYTk4ZWNjZjllMmNlOTcxNGMzZWJlMjU3MDhkNzRmZmViMjMyNmQ5MzQxMjFjNzgyYWViMjRjOTdkZjgwNWQiLCJwaW4iOjEyMzQ1NiwiaWF0IjoxNzEwOTY5Nzc3LCJleHAiOjE3MTEwMTI5Nzd9.5Cv7a6D9EBKgiERLDfWQK47dTRL-OMDLpg_j_6-X1tQ"
+            },
+            "tests": []
+        },
+        {
+            "_id": "4394e921-581c-4e19-b542-b2cbcaece788",
+            "colId": "db07da29-0a80-4ce3-948a-3a9b72804edc",
+            "containerId": "",
+            "name": "AvatarsGet",
+            "url": "localhost:3001/api/profiles/avatar",
+            "method": "GET",
+            "sortNum": 106250,
+            "created": "2024-02-27T00:52:44.689Z",
+            "modified": "2024-03-20T21:38:59.611Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmI1M2IxZWQ3MTI5ZGVkZjIwOWZjMSIsImVtYWlsIjoia2Vjb3JyYWxlczA3M0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNlYTk4ZWNjZjllMmNlOTcxNGMzZWJlMjU3MDhkNzRmZmViMjMyNmQ5MzQxMjFjNzgyYWViMjRjOTdkZjgwNWQiLCJwaW4iOjEyMzQ1NiwiaWF0IjoxNzEwOTY5Nzc3LCJleHAiOjE3MTEwMTI5Nzd9.5Cv7a6D9EBKgiERLDfWQK47dTRL-OMDLpg_j_6-X1tQ"
+            },
+            "tests": []
+        },
+        {
+            "_id": "e8b7d84e-3773-4fb3-bf5e-0fabe4c80137",
+            "colId": "db07da29-0a80-4ce3-948a-3a9b72804edc",
+            "containerId": "",
+            "name": "ProfileDelete",
+            "url": "localhost:3001/api/profiles?_id=65fb5493ed7129dedf209fc5",
+            "method": "DELETE",
+            "sortNum": 110000,
+            "created": "2024-02-26T22:51:40.148Z",
+            "modified": "2024-03-20T21:40:18.523Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "_id",
+                    "value": "65fb5493ed7129dedf209fc5",
+                    "isPath": false
+                }
+            ],
+            "reqType": "del",
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmI1M2IxZWQ3MTI5ZGVkZjIwOWZjMSIsImVtYWlsIjoia2Vjb3JyYWxlczA3M0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNlYTk4ZWNjZjllMmNlOTcxNGMzZWJlMjU3MDhkNzRmZmViMjMyNmQ5MzQxMjFjNzgyYWViMjRjOTdkZjgwNWQiLCJwaW4iOjEyMzQ1NiwiaWF0IjoxNzEwOTY5Nzc3LCJleHAiOjE3MTEwMTI5Nzd9.5Cv7a6D9EBKgiERLDfWQK47dTRL-OMDLpg_j_6-X1tQ"
+            },
+            "tests": []
+        }
+    ]
+}
