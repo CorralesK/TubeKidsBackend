@@ -72,7 +72,9 @@ const userPost = async (req, res) => {
  */
 const userGet = async (req, res) => {
     try {
-        if (req.body.email && req.body.password) {
+        if (!req.body.email && req.body.password)  {
+            return res.status(400).json({ error: 'Invalid request: email and password required' });
+        }
             const user = await User.findOne({ email: req.body.email });
             if (!user) {
                 return res.status(404).json({ error: 'User does not exist' });
@@ -87,10 +89,7 @@ const userGet = async (req, res) => {
             const token = createToken(user);
 
             res.header({ 'location': `/api/users/?id=${user.id}` });
-            return res.status(200).json(token);
-        } else {
-            return res.status(400).json({ error: 'Invalid request: email and password required' });
-        }
+            res.status(201).json(token);
     } catch (error) {
         console.error('Error while querying users:', error);
         return res.status(500).json({ error: 'Internal server error' });
