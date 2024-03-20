@@ -20,6 +20,29 @@ The TubeKidsBackend is a REST API service that provides functions to manage user
 3. Configure environment variables as needed.
 4. Start the server: `npm start`.
 
+## Endpoints API
+
+#### Users and Session
+- **POST /users**: Register a new user.
+- **POST /session**: Log in with existing credentials.
+- **GET /users/pin**: Get the PIN of the current user.
+  
+#### Videos and Playlist
+- **GET /videos**: Retrieve the list of all videos in the playlist.
+- **POST /videos**: Add a new video to the playlist.
+- **PATCH /videos**: Update details of a video in the playlist.
+- **DELETE /videos**: Remove a video from the playlist.
+  
+#### Profiles
+- **GET /profiles**: Retrieve the list of all profiles.
+- **POST /profiles**: Create a new profile.
+- **PATCH /profiles**: Update details of a profile.
+- **DELETE /profiles**: Delete a profile.
+- **GET /profiles/pin**: Get the PIN of the current profile.
+
+#### Avatars
+- **GET /profiles/avatar**: Retrieve the list of all avatars.
+
 ## License
 
 This project is licensed under the MIT License.
